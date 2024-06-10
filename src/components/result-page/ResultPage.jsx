@@ -1,3 +1,4 @@
+import WeatherCard from "./WeatherCard.jsx";
 import WeatherToday from "./WeatherToday.jsx";
 
 const ResultPage = () => {
@@ -7,6 +8,12 @@ const ResultPage = () => {
             <h1>Place name</h1>
             <p><small>Click to add to favourites</small></p>
             <WeatherToday />
+            <div className="row">
+                <WeatherCard />
+                <WeatherCard />
+                <WeatherCard />
+                <WeatherCard />
+            </div>
         </div>
     );
 };
