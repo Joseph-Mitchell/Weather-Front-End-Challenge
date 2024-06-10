@@ -1,3 +1,5 @@
+import SearchForm from "./SearchForm.jsx";
+
 const NavButtons = () => {
     return (
         <div className="container d-flex flex-column w-50">
@@ -15,6 +17,7 @@ const NavButtons = () => {
             </div>
             <a className="btn" data-bs-toggle="modal" data-bs-target="#loginModal">Log-In / Sign-Up</a>
             <a className="btn" href="/">Log-Out</a>
+            <SearchForm />
         </div>
     );
 };
