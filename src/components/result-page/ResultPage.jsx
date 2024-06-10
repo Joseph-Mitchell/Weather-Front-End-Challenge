@@ -2,6 +2,7 @@ import WeatherCard from "./WeatherCard.jsx";
 import WeatherToday from "./WeatherToday.jsx";
 
 import bookmark from "../../assets/icons/bookmark-star-fill.svg";
+import unbookmark from "../../assets/icons/bookmark-star.svg";
 
 const ResultPage = () => {
     return (
@@ -11,6 +12,10 @@ const ResultPage = () => {
             <p>
                 <a href=""><img src={bookmark} height="15px" /></a>&nbsp;
                 <small>Click to add to favourites</small>
+            </p>
+            <p>
+                <a href=""><img src={unbookmark} height="15px" /></a>&nbsp;
+                <small>Click to remove from favourites</small>
             </p>
             <WeatherToday />
             <hr />
