@@ -6,6 +6,7 @@ import ResultPage from "./components/result-page/ResultPage.jsx";
 import SearchPage from "./components/search-page/SearchPage.jsx";
 import OffCanvasMenu from './components/header/OffCanvasMenu.jsx';
 import LoginModal from './components/header/LoginModal.jsx';
+import FavouritesPage from './components/favourites-page/FavouritesPage.jsx';
 
 const App = () => {
     return (
@@ -24,6 +25,12 @@ const App = () => {
                     path="/search/:location"
                     element={
                         <ResultPage />
+                    }
+                />
+                <Route
+                    path="/favourites"
+                    element={
+                        <FavouritesPage />
                     }
                 />
             </Routes>

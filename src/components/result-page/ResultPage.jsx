@@ -1,8 +1,8 @@
 import WeatherCard from "./WeatherCard.jsx";
 import WeatherToday from "./WeatherToday.jsx";
 
-import bookmark from "../../assets/icons/bookmark-star-fill.svg";
-import unbookmark from "../../assets/icons/bookmark-star.svg";
+import bookmark from "../../assets/icons/bookmark-star.svg";
+import unbookmark from "../../assets/icons/bookmark-star-fill.svg";
 
 const ResultPage = () => {
     return (
