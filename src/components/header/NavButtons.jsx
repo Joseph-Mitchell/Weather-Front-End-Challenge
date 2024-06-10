@@ -13,6 +13,7 @@ const NavButtons = () => {
                 </ul>
             </div>
             <a className="btn" data-bs-toggle="modal" data-bs-target="#loginModal">Log-In / Sign-Up</a>
+            <a className="btn" href="/">Log-Out</a>
         </>
     );
 };
