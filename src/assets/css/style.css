@@ -3,3 +3,13 @@ body,
 #root {
     height: 100%
 }
+
+#root {
+    background: url(/assets/images/background.png) no-repeat;
+    background-size: cover;
+}
+
+.page {
+    height: 100%;
+    text-align: center;
+}
