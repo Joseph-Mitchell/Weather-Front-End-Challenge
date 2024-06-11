@@ -7,9 +7,12 @@ body,
 #root {
     background: url(/assets/images/background.png) no-repeat;
     background-size: cover;
+    background-attachment: fixed;
 }
 
 .page {
+    padding-top: 86px;
+    padding-bottom: 56px;
     height: 100%;
     text-align: center;
 }
