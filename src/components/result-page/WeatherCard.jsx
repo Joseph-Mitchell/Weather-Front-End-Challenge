@@ -1,7 +1,7 @@
 const WeatherCard = () => {
     return (
-        <div className="col-6 p-2">
-            <div className="card rounded-5">
+        <div className="p-2">
+            <div className="card | border-3 rounded-5 border-light | bg-transparent | text-light">
                 <div className="card-title">Next Day Name</div>
                 <img src="/assets/icons/weather-icons/10d.svg" height="80px"></img>
                 <div>

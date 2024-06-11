@@ -1,7 +1,7 @@
 const WeatherToday = () => {
     return (
-        <div className="container text-start mb-2">
-            <p>
+        <div className="row | mb-2 mt-5 mx-auto" id="weather-today">
+            <p className="text-start text-md-center">
                 <b>Today's Weather:</b>
                 <br />
                 Day, Xth Month Year
@@ -10,9 +10,9 @@ const WeatherToday = () => {
                 <div className="col-6 d-flex justify-content-center align-items-center">
                     <img src="/assets/icons/weather-icons/10d.svg" height="80px"></img>
                 </div>
-                <div className="col-6 ">
-                    <p className="d-flex justify-content-center">X &deg;C</p><br />
-                    <p className="d-flex justify-content-center">Weather Desc.</p>
+                <div className="col-6 d-flex flex-column flex-md-row align-items-center justify-content-around | text-center">
+                    <span>X &deg;C</span>
+                    <span>Weather Desc.</span>
                 </div>
             </div>
         </div>

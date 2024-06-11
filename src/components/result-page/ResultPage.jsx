@@ -3,20 +3,19 @@ import WeatherToday from "./WeatherToday.jsx";
 
 const ResultPage = () => {
     return (
-        <div className="container h-100 pt-1 text-center">
-            <h1>Telling you about...</h1>
+        <div className="container-fluid page text-light">
+            <h2 className="mt-5">Telling you about...</h2>
             <h1>Place name</h1>
-            <p>
-                <a href=""><img src="/assets/icons/favourite-icons/bookmark-star.svg" height="15px" /></a>&nbsp;
-                <small>Click to add to favourites</small>
-            </p>
-            <p>
-                <a href=""><img src="/assets/icons/favourite-icons/bookmark-star-fill.svg" height="15px" /></a>&nbsp;
-                <small>Click to remove from favourites</small>
-            </p>
+            <a className="icon-link | link-light link-underline link-underline-opacity-0" href="">
+                <i class="bi-bookmark-star text-light" /> Click to add to favourites
+            </a>
+            <br />
+            <a className="icon-link | link-light link-underline link-underline-opacity-0" href="">
+                <i class="bi-bookmark-star-fill text-light" /> Click to remove from favourites
+            </a>
             <WeatherToday />
             <hr />
-            <div className="row">
+            <div className="row row-cols-2 row-cols-md-4 | mx-auto" id="weather-cards">
                 <WeatherCard />
                 <WeatherCard />
                 <WeatherCard />

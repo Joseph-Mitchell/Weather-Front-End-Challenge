@@ -16,3 +16,19 @@ body,
     height: 100%;
     text-align: center;
 }
+
+#weather-today {
+    max-width: 408px;
+}
+
+@media only screen and (max-width: 767px) {
+    #weather-cards {
+        max-width: 408px;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    #weather-cards {
+        max-width: 744px;
+    }
+}
