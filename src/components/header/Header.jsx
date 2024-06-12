@@ -11,9 +11,9 @@ const Header = () => {
                         <li className="nav-item">
                             <a className="btn nav-link" href="/">Home</a>
                         </li>
-                        <li className="nav-item">
-                            <a className="btn nav-link dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown">My Saved Locations</a>
-                            <ul className="dropdown-menu">
+                        <li className="nav-item dropdown">
+                            <a className="btn nav-link dropdown-toggle" data-bs-toggle="dropdown">My Saved Locations</a>
+                            <ul className="dropdown-menu | text-center">
                                 <li><a className="dropdown-item" href="/favourites">All Locations</a></li>
                                 <li className="dropdown-divider"><hr /></li>
                                 <li><a className="dropdown-item" href="/search/paris">Paris</a></li>
