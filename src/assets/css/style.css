@@ -12,9 +12,6 @@ body,
 
 .page {
     padding-top: 86px;
-    padding-bottom: 56px;
-    height: 100%;
-    text-align: center;
 }
 
 #weather-today {

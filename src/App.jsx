@@ -12,27 +12,31 @@ const App = () => {
         <>
             <Header />
             <LoginModal />
-            <Routes>
-                <Route
-                    path="/"
-                    element={
-                        <SearchPage />
-                    }
-                />
-                <Route
-                    path="/search/:location"
-                    element={
-                        <ResultPage />
-                    }
-                />
-                <Route
-                    path="/favourites"
-                    element={
-                        <FavouritesPage />
-                    }
-                />
-            </Routes>
-            <Footer />
+            <div className="h-100 | d-flex | flex-column">
+                <div className="container-fluid | page | flex-fill | text-light text-center">
+                    <Routes>
+                        <Route
+                            path="/"
+                            element={
+                                <SearchPage />
+                            }
+                        />
+                        <Route
+                            path="/search/:location"
+                            element={
+                                <ResultPage />
+                            }
+                        />
+                        <Route
+                            path="/favourites"
+                            element={
+                                <FavouritesPage />
+                            }
+                        />
+                    </Routes>
+                </div>
+                <Footer />
+            </div>
         </>
     );
 };

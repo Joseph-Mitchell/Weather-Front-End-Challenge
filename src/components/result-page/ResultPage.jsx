@@ -3,7 +3,7 @@ import WeatherToday from "./WeatherToday.jsx";
 
 const ResultPage = () => {
     return (
-        <div className="container-fluid page text-light">
+        <>
             <h2 className="mt-5">Telling you about...</h2>
             <h1>Place name</h1>
             <a className="icon-link | link-light link-underline link-underline-opacity-0" href="">
@@ -21,7 +21,7 @@ const ResultPage = () => {
                 <WeatherCard />
                 <WeatherCard />
             </div>
-        </div>
+        </>
     );
 };
 export default ResultPage;
