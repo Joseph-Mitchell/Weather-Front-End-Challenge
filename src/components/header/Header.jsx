@@ -1,6 +1,6 @@
 const Header = () => {
     return (
-        <nav className="navbar navbar-expand-lg | position-fixed | start-0 top-0 | vw-100 | bg-secondary-subtle">
+        <nav className="navbar navbar-expand-lg | position-fixed | start-0 top-0 | vw-100 | bg-secondary-subtle | z-3">
             <div className="container-fluid">
                 <a className="navbar-brand" href="/"><img className="p-1" src="/assets/images/logo.png" height="60px" /></a>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
