@@ -1,11 +1,11 @@
 import { Route, Routes } from 'react-router-dom';
 
-import Footer from "./components/footer/Footer.jsx";
-import Header from "./components/header/Header.jsx";
-import ResultPage from "./components/result-page/ResultPage.jsx";
-import SearchPage from "./components/search-page/SearchPage.jsx";
-import LoginModal from './components/header/LoginModal.jsx';
-import FavouritesPage from './components/favourites-page/FavouritesPage.jsx';
+import Footer from "./components/ui/Footer.jsx";
+import Header from "./components/ui/Header.jsx";
+import ResultPage from "./components/pages/result-page/ResultPage.jsx";
+import SearchPage from "./components/pages/search-page/SearchPage.jsx";
+import LoginModal from './components/ui/LoginModal.jsx';
+import FavouritesPage from './components/pages/favourites-page/FavouritesPage.jsx';
 
 const App = () => {
     return (
