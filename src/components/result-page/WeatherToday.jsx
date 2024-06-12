@@ -8,7 +8,7 @@ const WeatherToday = () => {
             </p>
             <div className="row">
                 <div className="col-6 d-flex justify-content-center align-items-center">
-                    <img src="/assets/icons/weather-icons/10d.svg" height="80px"></img>
+                    <img src="/assets/weather-icons/10d.svg" height="80px"></img>
                 </div>
                 <div className="col-6 d-flex flex-column flex-md-row align-items-center justify-content-around | text-center">
                     <span>X &deg;C</span>
