@@ -1,6 +1,9 @@
-import { useLayoutEffect } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
+import SearchSuggestionList from "./SearchSuggestionList.jsx";
 
 const SearchPage = () => {
+
+    const [search, setSearch] = useState("");
 
     useLayoutEffect(() => {
         const list = document.getElementById("location-suggestions");
@@ -12,7 +15,9 @@ const SearchPage = () => {
     });
 
     const hideSearches = (e) => {
-        document.getElementById("location-suggestions").classList.add("d-none");
+        setTimeout(() => {
+            document.getElementById("location-suggestions").classList.add("d-none");
+        }, 100);
     };
     const showSearches = (e) => {
         document.getElementById("location-suggestions").classList.remove("d-none");
@@ -23,13 +28,18 @@ const SearchPage = () => {
             <form className="text-center">
                 <h1 className="m-0">Tell me about...</h1>
                 <div className="d-flex">
-                    <input className="d-block p-2 mt-4 fs-5 flex-fill" id="search-bar" placeholder="Location name..." onBlur={hideSearches} onFocus={showSearches} />
+                    <input
+                        className="d-block p-2 mt-4 fs-5 flex-fill"
+                        id="search-bar"
+                        placeholder="Location name..."
+                        value={search}
+                        onChange={e => setSearch(e.target.value)}
+                        onBlur={hideSearches}
+                        onFocus={showSearches}
+                    />
                 </div>
                 <div className="list-group | d-none | position-absolute | text-start | border-2 rounded-0" id="location-suggestions">
-                    <a href="#" className="list-group-item list-group-item-action">A second link item</a>
-                    <a href="#" className="list-group-item list-group-item-action">A third link item</a>
-                    <a href="#" className="list-group-item list-group-item-action">A fourth link item</a>
-                    <a href="#" className="list-group-item list-group-item-action">A fourth link item</a>
+                    <SearchSuggestionList search={search} setSearch={setSearch} />
                 </div>
                 <button type="submit" className="btn btn-primary mt-4">Search</button>
             </form>
