@@ -8,6 +8,7 @@ import LoginModal from './components/ui/LoginModal.jsx';
 import FavouritesPage from './components/pages/favourites-page/FavouritesPage.jsx';
 
 const App = () => {
+
     return (
         <>
             <Header />
