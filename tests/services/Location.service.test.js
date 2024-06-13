@@ -9,7 +9,7 @@ vi.mock("axios");
 describe("Location Searcher", () => {
     it("should return json array of objects when axios get resolves", async () => {
         //Arrange
-        axios.get.mockResolvedValueOnce(testLocations);
+        axios.get.mockResolvedValueOnce({ data: testLocations });
         
         //Act
         const actual = await searchLocation();
