@@ -24,7 +24,7 @@ const SearchSuggestionList = ({ search, setSearch, setSelectedLocation }) => {
 
     let count = 0;
     locations.forEach(location => {
-        const state = location.state !== "" ? `, ${location.state}` : "";
+        const state = location.state !== undefined ? `, ${location.state}` : "";
         const name_agg = location.name + state + ", " + location.country;
         const id = "suggestion_" + count;
 
