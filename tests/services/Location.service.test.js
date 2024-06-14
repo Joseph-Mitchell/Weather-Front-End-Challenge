@@ -2,11 +2,12 @@ import axios from "axios";
 
 import searchLocation from "../../src/services/Location.service.js"
 import testLocations from "../data/testLocations.js"
-import { expect, vi } from "vitest";
+import { beforeAll, expect, vi } from "vitest";
 
 vi.mock("axios");
 
-describe("Location Searcher", () => {
+describe("Location service", () => {
+    
     it("should return json array of objects when axios get resolves", async () => {
         //Arrange
         axios.get.mockResolvedValueOnce({ data: testLocations });
@@ -24,9 +25,10 @@ describe("Location Searcher", () => {
         const logSpy = vi.spyOn(console, "log").mockImplementation(() => undefined);
         
         //Act
-        const actual = await searchLocation();
+        await searchLocation();
         
         //Assert
         expect(logSpy).toBeCalled();
+        logSpy.mockReset();
     });
 });
