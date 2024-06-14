@@ -23,7 +23,7 @@ const App = () => {
                             }
                         />
                         <Route
-                            path="/search/:location"
+                            path="/search"
                             element={
                                 <ResultPage />
                             }

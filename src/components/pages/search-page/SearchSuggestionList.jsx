@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import searchLocation from "../../../services/Location.service.js";
 
-const SearchSuggestionList = ({ search, setSearch, setSearchValidated }) => {
+const SearchSuggestionList = ({ search, setSearch, setSelectedLocation }) => {
 
     const [locations, setLocations] = useState([]);
+
+    let suggestionRows = [];
 
     const getLocations = async () => {
         const locations = await searchLocation(search);
@@ -13,19 +15,22 @@ const SearchSuggestionList = ({ search, setSearch, setSearchValidated }) => {
     const copyToSearch = (e) => {
         e.preventDefault();
         setSearch(e.target.innerText);
-        setSearchValidated(true);
+        setSelectedLocation(locations[e.target.id.replace("suggestion_", "")]);
     };
 
     useEffect(() => {
         getLocations();
     }, [search]);
 
-    let suggestionRows = [];
+    let count = 0;
     locations.forEach(location => {
-
         const state = location.state !== "" ? `, ${location.state}` : "";
         const name_agg = location.name + state + ", " + location.country;
-        suggestionRows.push(<button key={name_agg} className="list-group-item list-group-item-action" onClick={copyToSearch}>{name_agg}</button>);
+        const id = "suggestion_" + count;
+
+        suggestionRows.push(<button key={count} id={id} className="list-group-item list-group-item-action" onClick={copyToSearch}>{name_agg}</button>);
+
+        count++;
     });
 
     return (

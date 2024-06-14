@@ -1,33 +1,39 @@
 import { useEffect, useLayoutEffect, useState } from "react";
 import SearchSuggestionList from "./SearchSuggestionList.jsx";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 const SearchForm = ({ type }) => {
 
     const [search, setSearch] = useState("");
-    const [searchValidated, setSearchValidated] = useState(false);
+    const [selectedLocation, setSelectedLocation] = useState({});
+    const [searchParams, setSearchParams] = useSearchParams();
 
     const navigate = useNavigate();
 
-    useLayoutEffect(() => {
+    const positionSuggestions = () => {
         const list = document.getElementById("location-suggestions");
         const searchBarRect = document.getElementById("search-bar").getBoundingClientRect();
 
         list.style.width = `${searchBarRect.right - searchBarRect.left}px`;
+
         list.style.left = searchBarRect.left;
 
         if (type === "nav")
             list.style.top = `${searchBarRect.bottom}px`;
         else
             list.style.top = searchBarRect.bottom;
+    };
+
+    useLayoutEffect(() => {
+        positionSuggestions();
     });
 
     useEffect(() => {
-        if (searchValidated)
+        if (selectedLocation.lon !== undefined && selectedLocation.lat !== undefined)
             document.getElementById("search-bar").classList.add("bg-primary-subtle");
         else
             document.getElementById("search-bar").classList.remove("bg-primary-subtle");
-    }, [searchValidated]);
+    }, [selectedLocation]);
 
     const hideSearches = () => {
         setTimeout(() => {
@@ -36,6 +42,8 @@ const SearchForm = ({ type }) => {
     };
 
     const showSearches = () => {
+        positionSuggestions();
+
         document.getElementById("search-bar").classList.remove("bg-danger-subtle");
         document.getElementById("searchAlert").classList.add("d-none");
 
@@ -44,13 +52,13 @@ const SearchForm = ({ type }) => {
 
     const searchOnChange = (e) => {
         setSearch(e.target.value);
-        setSearchValidated(false);
+        setSelectedLocation({});
     };
 
     const sendSearch = (e) => {
         e.preventDefault();
-        if (searchValidated)
-            navigate("/search/" + search);
+        if (selectedLocation.lat !== undefined && selectedLocation.lon !== undefined)
+            navigate("/search?lat=" + selectedLocation.lat + "&lon=" + selectedLocation.lon);
         else {
             document.getElementById("search-bar").classList.add("bg-danger-subtle");
             document.getElementById("searchAlert").classList.remove("d-none");
@@ -71,7 +79,7 @@ const SearchForm = ({ type }) => {
                     onFocus={showSearches}
                 />
                 <div className="list-group | d-none | position-absolute | text-start | border-2 rounded-0 | z-3" id="location-suggestions">
-                    <SearchSuggestionList search={search} setSearch={setSearch} setSearchValidated={setSearchValidated} />
+                    <SearchSuggestionList search={search} setSearch={setSearch} setSelectedLocation={setSelectedLocation} />
                 </div>
                 <div id="searchAlert" className="alert alert-danger p-2 mb-1 d-none position-absolute | mt-5" role="alert">
                     Please choose a location from the autocomplete
@@ -95,7 +103,7 @@ const SearchForm = ({ type }) => {
                     />
                 </div>
                 <div className="list-group | d-none | position-absolute | text-start | border-2 rounded-0 | z-3" id="location-suggestions">
-                    <SearchSuggestionList search={search} setSearch={setSearch} setSearchValidated={setSearchValidated} />
+                    <SearchSuggestionList search={search} setSearch={setSearch} setSelectedLocation={setSelectedLocation} />
                 </div>
                 <div id="searchAlert" className="alert alert-danger p-2 mb-1 d-none position-absolute" role="alert">
                     Please choose a location from the autocomplete
