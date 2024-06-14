@@ -4,10 +4,20 @@ body,
     height: 100%
 }
 
-#root {
-    background: url(/assets/images/background.png) no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
+@media only screen and (max-width: 767px) {
+    #root {
+        background-color: rgb(134, 171, 196);
+        background-size: cover;
+        background-attachment: fixed;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    #root {
+        background: url(/assets/images/background.png) no-repeat;
+        background-size: cover;
+        background-attachment: fixed;
+    }
 }
 
 .page {
