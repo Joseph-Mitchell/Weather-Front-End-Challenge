@@ -22,4 +22,17 @@ describe("Weather service", () => {
         expect(actual).to.equal(testLocations);
         expect(axios.get).toBeCalledWith(expectedParameter);
     });
+    
+    it("should log to console when axios get throws error", async () => {
+        //Arrange
+        axios.get.mockRejectedValueOnce(new Error("error message"));
+        const logSpy = vi.spyOn(console, "log").mockImplementation(() => undefined);
+        
+        //Act
+        await searchWeather();
+        
+        //Assert
+        expect(logSpy).toBeCalled();
+        logSpy.mockReset();
+    });
 });
