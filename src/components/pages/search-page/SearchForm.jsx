@@ -1,12 +1,11 @@
 import { useEffect, useLayoutEffect, useState } from "react";
 import SearchSuggestionList from "./SearchSuggestionList.jsx";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const SearchForm = ({ type }) => {
 
     const [search, setSearch] = useState("");
     const [selectedLocation, setSelectedLocation] = useState({});
-    const [searchParams, setSearchParams] = useSearchParams();
 
     const navigate = useNavigate();
 
