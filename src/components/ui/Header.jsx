@@ -1,3 +1,6 @@
+import { Route, Routes } from "react-router-dom";
+import SearchForm from "../pages/search-page/SearchForm.jsx";
+
 const Header = () => {
     return (
         <nav className="navbar navbar-expand-lg | position-fixed | start-0 top-0 | vw-100 | bg-secondary-subtle | z-3">
@@ -27,10 +30,18 @@ const Header = () => {
                             <a className="btn nav-link" href="/">Log-Out</a>
                         </li>
                     </ul>
-                    <form className="d-flex" role="search">
-                        <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                        <button className="btn" type="submit"><i className="bi-search fs-4" /></button>
-                    </form>
+                    <Routes>
+                        <Route
+                            exact
+                            path="/"
+                            element={<></>}
+                        />
+                        <Route
+                            exact
+                            path="*"
+                            element={<SearchForm type="nav" />}
+                        />
+                    </Routes>
                 </div>
             </div>
         </nav>
