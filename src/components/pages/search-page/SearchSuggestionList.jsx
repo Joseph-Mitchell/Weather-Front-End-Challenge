@@ -1,20 +1,19 @@
 import { useEffect, useState } from "react";
 import searchLocation from "../../../services/Location.service.js";
 
-const SearchSuggestionList = ({ search, setSearch }) => {
+const SearchSuggestionList = ({ search, setSearch, setSearchValidated }) => {
 
     const [locations, setLocations] = useState([]);
 
     const getLocations = async () => {
-        console.log("searching");
         const locations = await searchLocation(search);
-        console.log(locations);
         setLocations(locations);
     };
 
     const copyToSearch = (e) => {
         e.preventDefault();
         setSearch(e.target.innerText);
+        setSearchValidated(true);
     };
 
     useEffect(() => {
