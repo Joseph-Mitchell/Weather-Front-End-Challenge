@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export default async function searchLocation(search) {
-    if (search.length === 0) return [];
+    if (search.length === 0 || /[^A-z\s\d][\\\^]?/g.test(search)) return [];
     
     try {
         const locationUrl = import.meta.env.VITE_APP_LOCATION_URL;
@@ -9,5 +9,6 @@ export default async function searchLocation(search) {
         return response.data;
     } catch (e) {
         console.log(e.message);
+        return [];
     }
 }
