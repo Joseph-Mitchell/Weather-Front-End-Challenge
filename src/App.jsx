@@ -37,7 +37,7 @@ const App = () => {
 
     return (
         <>
-            <Header loginModal={loginModal} loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
+            <Header loginModal={loginModal} loggedIn={loggedIn} setLoggedIn={setLoggedIn} favourites={favourites} />
             <LoginModal loginModal={loginModal} setLoginModal={setLoginModal} setLoggedIn={setLoggedIn} />
             <div className="h-100 | d-flex | flex-column">
                 <div className="container-fluid | page | flex-fill | text-light text-center">
@@ -57,7 +57,7 @@ const App = () => {
                         <Route
                             path="/favourites"
                             element={
-                                <FavouritesPage />
+                                <FavouritesPage setLoadFavs={setLoadFavs} favourites={favourites} />
                             }
                         />
                     </Routes>

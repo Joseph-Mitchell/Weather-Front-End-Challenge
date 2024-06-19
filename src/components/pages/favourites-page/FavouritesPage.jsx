@@ -1,6 +1,6 @@
 import FavouritesListLayout from "./FavouritesListLayout.jsx";
 
-const FavouritesPage = () => {
+const FavouritesPage = ({ favourites, setLoadFavs }) => {
     return (
         <>
             <h2 className="mt-5">Telling you about...</h2>
@@ -10,7 +10,7 @@ const FavouritesPage = () => {
                 <br />
                 Click location name to view it's forecast
             </p>
-            <FavouritesListLayout />
+            <FavouritesListLayout setLoadFavs={setLoadFavs} favourites={favourites} />
         </>
     );
 };
