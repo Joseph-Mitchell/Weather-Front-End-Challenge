@@ -19,13 +19,10 @@ const App = () => {
             setLoggedIn("true");
     }, []);
 
-    if (loggedIn)
-        console.log("logged in");
-
     return (
         <>
-            <Header loginModal={loginModal} />
-            <LoginModal loginModal={loginModal} setLoginModal={setLoginModal} />
+            <Header loginModal={loginModal} loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
+            <LoginModal loginModal={loginModal} setLoginModal={setLoginModal} setLoggedIn={setLoggedIn} />
             <div className="h-100 | d-flex | flex-column">
                 <div className="container-fluid | page | flex-fill | text-light text-center">
                     <Routes>

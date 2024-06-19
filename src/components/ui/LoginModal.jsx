@@ -3,7 +3,7 @@ import registerAccount from "../../services/Register.service.js";
 import loginAccount from "../../services/Login.service.js";
 import { Modal } from 'bootstrap';
 
-const LoginModal = ({ loginModal, setLoginModal }) => {
+const LoginModal = ({ loginModal, setLoginModal, setLoggedIn }) => {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -26,16 +26,16 @@ const LoginModal = ({ loginModal, setLoginModal }) => {
 
     async function login() {
         const response = await loginAccount(email, password);
-        console.log(response);
 
         if (response.message) {
             setAlert(response.message);
             setAlertColour("danger");
+            document.getElementById("responseAlert").classList.remove("d-none");
         } else {
             localStorage.setItem("token", response.token);
+            setLoggedIn(true);
             loginModal.hide();
         }
-        document.getElementById("responseAlert").classList.remove("d-none");
     }
 
     async function signup() {
