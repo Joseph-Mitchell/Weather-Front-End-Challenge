@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import registerAccount from "../../services/Register.service.js";
 import loginAccount from "../../services/Login.service.js";
 import { Modal } from 'bootstrap';
 
 const LoginModal = ({ loginModal, setLoginModal, setLoggedIn }) => {
+
+    const navigate = useNavigate();
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -35,6 +38,7 @@ const LoginModal = ({ loginModal, setLoginModal, setLoggedIn }) => {
             localStorage.setItem("token", response.token);
             setLoggedIn(true);
             loginModal.hide();
+            navigate("/");
         }
     }
 

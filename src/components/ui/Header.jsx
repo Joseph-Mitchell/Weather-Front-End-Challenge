@@ -1,7 +1,9 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import SearchForm from "../pages/search-page/SearchForm.jsx";
 
 const Header = ({ loginModal, loggedIn, setLoggedIn }) => {
+
+    const navigate = useNavigate();
 
     function openModal() {
         loginModal.show();
@@ -10,6 +12,7 @@ const Header = ({ loginModal, loggedIn, setLoggedIn }) => {
     function logOut() {
         setLoggedIn(false);
         localStorage.removeItem("token");
+        navigate("/");
     }
 
     return (
