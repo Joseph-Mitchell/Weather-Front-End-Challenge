@@ -6,6 +6,7 @@ import WeatherToday from "./WeatherToday.jsx";
 
 import searchWeather from "../../../services/Weather.service.js";
 import addFavourite from "../../../services/AddFavourite.service.js";
+import removeFavourite from "../../../services/RemoveFavourite.service.js";
 
 const ResultPage = () => {
     const [searchParams, setSearchParams] = useSearchParams();
@@ -23,6 +24,10 @@ const ResultPage = () => {
             lat: weather.city.coord.lat,
             lon: weather.city.coord.lon,
         });
+    }
+
+    function removeFavouriteClick() {
+        removeFavourite(localStorage.getItem("token"), weather.city.coord.lat, weather.city.coord.lon);
     }
 
     async function getWeather() {
@@ -45,7 +50,7 @@ const ResultPage = () => {
                 <i className="bi-bookmark-star text-light" /> Click to add to favourites
             </a>
             <br />
-            <a className="icon-link | link-light link-underline link-underline-opacity-0" type="button">
+            <a className="icon-link | link-light link-underline link-underline-opacity-0" type="button" onClick={removeFavouriteClick}>
                 <i className="bi-bookmark-star-fill text-light" /> Click to remove from favourites
             </a>
             <WeatherToday weather={weather.list[0]} />
