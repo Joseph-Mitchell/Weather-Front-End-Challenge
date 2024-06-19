@@ -6,13 +6,26 @@ import ResultPage from "./components/pages/result-page/ResultPage.jsx";
 import SearchPage from "./components/pages/search-page/SearchPage.jsx";
 import LoginModal from './components/ui/LoginModal.jsx';
 import FavouritesPage from './components/pages/favourites-page/FavouritesPage.jsx';
+import { useEffect, useState } from 'react';
+import { Modal } from "bootstrap";
 
 const App = () => {
+    const [loggedIn, setLoggedIn] = useState(false);
+
+    const [loginModal, setLoginModal] = useState({});
+
+    useEffect(() => {
+        if (localStorage.getItem("token"))
+            setLoggedIn("true");
+    }, []);
+
+    if (loggedIn)
+        console.log("logged in");
 
     return (
         <>
-            <Header />
-            <LoginModal />
+            <Header loginModal={loginModal} />
+            <LoginModal loginModal={loginModal} setLoginModal={setLoginModal} />
             <div className="h-100 | d-flex | flex-column">
                 <div className="container-fluid | page | flex-fill | text-light text-center">
                     <Routes>

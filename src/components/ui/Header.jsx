@@ -1,7 +1,12 @@
 import { Route, Routes } from "react-router-dom";
 import SearchForm from "../pages/search-page/SearchForm.jsx";
 
-const Header = () => {
+const Header = ({ loginModal }) => {
+
+    function openModal() {
+        loginModal.show();
+    }
+
     return (
         <nav className="navbar navbar-expand-lg | position-fixed | start-0 top-0 | vw-100 | bg-secondary-subtle | z-3">
             <div className="container-fluid">
@@ -24,7 +29,7 @@ const Header = () => {
                             </ul>
                         </li>
                         <li className="nav-item">
-                            <a className="btn nav-link" data-bs-toggle="modal" data-bs-target="#loginModal">Log-In / Sign-Up</a>
+                            <a className="btn nav-link" onClick={openModal}>Log-In / Sign-Up</a>
                         </li>
                         <li className="nav-item">
                             <a className="btn nav-link" href="/">Log-Out</a>

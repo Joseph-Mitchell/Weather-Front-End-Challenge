@@ -1,7 +1,9 @@
-import { createElement, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import registerAccount from "../../services/Register.service.js";
+import loginAccount from "../../services/Login.service.js";
+import { Modal } from 'bootstrap';
 
-const LoginModal = () => {
+const LoginModal = ({ loginModal, setLoginModal }) => {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -10,6 +12,7 @@ const LoginModal = () => {
     const [alertColour, setAlertColour] = useState("danger");
 
     useEffect(() => {
+        setLoginModal(new Modal(document.getElementById("loginModal")));
         hideAlert();
     }, []);
 
@@ -22,7 +25,17 @@ const LoginModal = () => {
     }
 
     async function login() {
+        const response = await loginAccount(email, password);
+        console.log(response);
 
+        if (response.message) {
+            setAlert(response.message);
+            setAlertColour("danger");
+        } else {
+            localStorage.setItem("token", response.token);
+            loginModal.hide();
+        }
+        document.getElementById("responseAlert").classList.remove("d-none");
     }
 
     async function signup() {
@@ -32,7 +45,6 @@ const LoginModal = () => {
             setAlert(response.message);
             setAlertColour("danger");
         } else {
-            console.log("here");
             setAlert("Registered successfully, please log in with your credentials");
             setAlertColour("success");
         }
@@ -45,7 +57,7 @@ const LoginModal = () => {
 
     return (
         <>
-            <div className="modal" id="loginModal">
+            <div className="modal fade" id="loginModal">
                 <div className="modal-dialog modal-dialog-centered" id="login-modal">
                     <div className="modal-content bg-secondary-subtle">
                         <form className="modal-body text-center fs-5">
