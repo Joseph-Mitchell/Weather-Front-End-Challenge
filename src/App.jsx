@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useSearchParams } from 'react-router-dom';
 
 import Footer from "./components/ui/Footer.jsx";
 import Header from "./components/ui/Header.jsx";
@@ -7,17 +7,33 @@ import SearchPage from "./components/pages/search-page/SearchPage.jsx";
 import LoginModal from './components/ui/LoginModal.jsx';
 import FavouritesPage from './components/pages/favourites-page/FavouritesPage.jsx';
 import { useEffect, useState } from 'react';
-import { Modal } from "bootstrap";
+import getFavourites from './services/GetFavourites.service.js';
 
 const App = () => {
     const [loggedIn, setLoggedIn] = useState(false);
 
     const [loginModal, setLoginModal] = useState({});
 
+    const [favourites, setFavourites] = useState([]);
+
+    const [loadFavs, setLoadFavs] = useState(false);
+
+    async function loadFavourites() {
+        const fav = await getFavourites(localStorage.getItem("token"));
+        setFavourites(fav);
+    }
+
+    console.log(favourites);
+
     useEffect(() => {
         if (localStorage.getItem("token"))
             setLoggedIn("true");
     }, []);
+
+    useEffect(() => {
+        setLoadFavs(false);
+        loadFavourites();
+    }, [loggedIn, loadFavs]);
 
     return (
         <>
@@ -35,7 +51,7 @@ const App = () => {
                         <Route
                             path="/search"
                             element={
-                                <ResultPage />
+                                <ResultPage setLoadFavs={setLoadFavs} favourites={favourites} loggedIn={loggedIn} />
                             }
                         />
                         <Route
