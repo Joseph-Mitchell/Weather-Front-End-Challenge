@@ -23,8 +23,6 @@ const App = () => {
         setFavourites(fav);
     }
 
-    console.log(favourites);
-
     useEffect(() => {
         if (localStorage.getItem("token"))
             setLoggedIn("true");
